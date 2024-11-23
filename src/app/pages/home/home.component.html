@@ -8,6 +8,7 @@
         placeholder="Type new todo"
         autofocus
         type="text"
+        (change)="addTodo($event)"
       />
     </div>
   </header>
@@ -40,11 +41,11 @@
           <input class="edit" value="Make dishes" />
         </li>
 
-        <li *ngFor="let todo of todos()">
+        <li *ngFor="let todo of todos(); index as i">
           <div class="view">
             <input class="toggle" type="checkbox" />
             <label>{{ todo.name }}</label>
-            <button class="destroy"></button>
+            <button class="destroy" (click)="deleteTodo(i)"></button>
           </div>
           <input class="edit" value="Buy a unicorn" />
         </li>
