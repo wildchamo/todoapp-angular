@@ -14,4 +14,17 @@ export class LabsComponent {
     { name: 'Task 2', completed: true },
     { name: 'Task 3', completed: false },
   ];
+  name = 'Jose Luis 😈';
+  edad = 30;
+
+  isDisabled = false;
+
+  img = 'https://www.w3schools.com/howto/img_avatar.png';
+
+  person = {
+    name: 'Jose Luis',
+    age: 30,
+  };
 }
+
+//es posible querer que el template no tenga acceso a las variables
