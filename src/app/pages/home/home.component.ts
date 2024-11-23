@@ -48,4 +48,8 @@ export class HomeComponent {
   generateId() {
     return Math.floor(1000 + Math.random() * 9000);
   }
+
+  incompleteTodos() {
+    return this.todos().filter((task) => !task.completed)?.length;
+  }
 }
