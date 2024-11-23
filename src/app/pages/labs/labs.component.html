@@ -1,46 +1,64 @@
-<h1>Hola, soy Jose</h1>
-<h2>Soy Jose, número 2</h2>
-<h3>{{ welcome }}</h3>
+<section class="labs">
+  <h1>Hola, soy Jose</h1>
+  <h2>Soy Jose, número 2</h2>
+  <h3>{{ welcome }}</h3>
 
-<ul>
-  <li *ngFor="let task of tasks()">{{ task.name }}, {{ task.completed }}</li>
-</ul>
+  <ul>
+    <li *ngFor="let task of tasks()">{{ task.name }}, {{ task.completed }}</li>
+  </ul>
 
-<hr />
+  <hr />
 
-<h2>hola, soy {{ name }} y tengo {{ edad }} años!!!!</h2>
-<p>la suma de 3 + 3 es {{ 3 + 3 }}</p>
+  <h2>hola, soy {{ name }} y tengo {{ edad }} años!!!!</h2>
+  <p>la suma de 3 + 3 es {{ 3 + 3 }}</p>
 
-<hr />
+  <hr />
 
-<img [src]="img" alt="" />
-<input type="text" [value]="name" [disabled]="isDisabled" />
+  <img [src]="img" alt="" />
+  <input type="text" [value]="name" [disabled]="isDisabled" />
 
-<button (click)="clickHandler()">lick me</button>
-<button (dblclick)="clickHandler()">kick me</button>
+  <button (click)="clickHandler()">lick me</button>
+  <button (dblclick)="clickHandler()">kick me</button>
 
-<p>person: {{ person.name }}</p>
-<p>age: {{ person.age }}</p>
+  <p>person: {{ person().name }}</p>
+  <p>age: {{ person().age }}</p>
 
-Change
-<input type="text" (change)="changeInput($event)" />
+  Change
+  <input type="text" (change)="changeInput($event)" />
 
-Key Down
+  Key Down
 
-<input type="text" (keydown)="keyDownHandler($event)" />
+  <input type="text" (keydown)="keyDownHandler($event)" />
 
-Tecla especifica
-<input type="text" (keydown.shift.t)="clickHandler()" />
+  Tecla especifica
+  <input type="text" (keydown.shift.t)="clickHandler()" />
 
-Signals
+  Signals
 
-<p>{{ holaSignal() }}</p>
+  <p>{{ holaSignal() }}</p>
 
-<hr />
+  <hr />
 
-<ul>
-  <p>total: {{ tasks().length }}</p>
-  <li *ngFor="let task of tasks(); index as i">
-    {{ i + 1 }} {{ task.name }}, {{ task.completed }}
-  </li>
-</ul>
+  <ul>
+    <p>total: {{ tasks().length }}</p>
+    <li *ngFor="let task of tasks(); index as i">
+      {{ i + 1 }} {{ task.name }}, {{ task.completed }}
+    </li>
+  </ul>
+
+  <hr />
+
+  <h2>ngIf</h2>
+
+  <div *ngIf="1 === 1">My content</div>
+
+  <div *ngIf="holaSignal() !== 'jelow Joselin pinguin'; else noNameBlock">
+    efectivamente jai pap
+  </div>
+
+  <ng-template #noNameBlock> No se cumple la condicion </ng-template>
+
+  <h3>Hola</h3>
+
+  <h1 *ngIf="person().age > 29">cumple con la edad</h1>
+</section>

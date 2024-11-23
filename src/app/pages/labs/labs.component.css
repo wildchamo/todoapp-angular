@@ -13,3 +13,7 @@ button{
     display: inline-block;
     transition-duration: 0.4s;
 }
+
+.labs{
+  padding: 5rem;
+}

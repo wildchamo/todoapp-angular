@@ -23,10 +23,10 @@ export class LabsComponent {
 
   img = 'https://www.w3schools.com/howto/img_avatar.png';
 
-  person = {
+  person = signal({
     name: 'Jose Luis',
     age: 30,
-  };
+  });
 
   clickHandler() {
     alert('hola!');
