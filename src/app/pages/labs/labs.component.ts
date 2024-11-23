@@ -17,6 +17,8 @@ export class LabsComponent {
   name = 'Jose Luis 😈';
   edad = 30;
 
+  hola = 'jelow';
+
   isDisabled = false;
 
   img = 'https://www.w3schools.com/howto/img_avatar.png';
@@ -28,6 +30,16 @@ export class LabsComponent {
 
   clickHandler() {
     alert('hola!');
+  }
+
+  changeInput(event: Event) {
+    console.log(event);
+    // this.hola = newValue;
+  }
+
+  keyDownHandler(event: KeyboardEvent) {
+    const input = event.target as HTMLInputElement;
+    console.log(input.value);
   }
 }
 

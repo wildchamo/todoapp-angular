@@ -21,3 +21,14 @@
 
 <p>person: {{ person.name }}</p>
 <p>age: {{ person.age }}</p>
+
+<p>{{ hola }}</p>
+Change
+<input type="text" (change)="changeInput($event)" />
+
+Key Down
+
+<input type="text" (keydown)="keyDownHandler($event)" />
+
+Tecla especifica
+<input type="text" (keydown.shift.t)="clickHandler()" />
