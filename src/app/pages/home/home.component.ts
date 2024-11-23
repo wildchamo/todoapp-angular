@@ -43,8 +43,6 @@ export class HomeComponent {
         task.id === id ? { ...task, completed: !task.completed } : task
       )
     );
-
-    console.log(this.todos());
   }
 
   generateId() {
