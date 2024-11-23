@@ -43,11 +43,15 @@
 
         <li *ngFor="let todo of todos(); index as i">
           <div class="view">
-            <input class="toggle" type="checkbox" />
+            <input
+              class="toggle"
+              type="checkbox"
+              (click)="completeTodo(todo.id)"
+            />
             <label>{{ todo.name }}</label>
             <button class="destroy" (click)="deleteTodo(todo.id)"></button>
           </div>
-          <input class="edit" value="Buy a unicorn" />
+          <input class="edit" />
         </li>
       </ul>
     </section>

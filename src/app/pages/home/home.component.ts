@@ -32,11 +32,22 @@ export class HomeComponent {
     eventTarget.value = '';
   }
 
-  generateId() {
-    return Math.floor(1000 + Math.random() * 9000);
+  deleteTodo(id: number) {
+    this.todos.update((todos) => todos.filter((task) => task.id !== id));
   }
 
-  deleteTodo(index: number) {
-    this.todos.update((todos) => todos.filter((task) => task.id !== index));
+  completeTodo(id: number) {
+    console.log(id);
+    this.todos.update((todos) =>
+      todos.map((task) =>
+        task.id === id ? { ...task, completed: !task.completed } : task
+      )
+    );
+
+    console.log(this.todos());
+  }
+
+  generateId() {
+    return Math.floor(1000 + Math.random() * 9000);
   }
 }
