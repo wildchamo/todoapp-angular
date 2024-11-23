@@ -39,6 +39,15 @@
           </div>
           <input class="edit" value="Make dishes" />
         </li>
+
+        <li *ngFor="let todo of todos()">
+          <div class="view">
+            <input class="toggle" type="checkbox" />
+            <label>{{ todo.name }}</label>
+            <button class="destroy"></button>
+          </div>
+          <input class="edit" value="Buy a unicorn" />
+        </li>
       </ul>
     </section>
     <!-- This footer should be hidden by default and shown when there are todos -->
