@@ -9,11 +9,11 @@ import { CommonModule } from '@angular/common';
 })
 export class LabsComponent {
   welcome = 'jai papa';
-  tasks = [
+  tasks = signal([
     { name: 'Task 1', completed: false },
     { name: 'Task 2', completed: true },
     { name: 'Task 3', completed: false },
-  ];
+  ]);
   name = 'Jose Luis 😈';
   edad = 30;
 
