@@ -16,7 +16,8 @@
 <img [src]="img" alt="" />
 <input type="text" [value]="name" [disabled]="isDisabled" />
 
-<button>lick me</button>
+<button (click)="clickHandler()">lick me</button>
+<button (dblclick)="clickHandler()">kick me</button>
 
 <p>person: {{ person.name }}</p>
 <p>age: {{ person.age }}</p>

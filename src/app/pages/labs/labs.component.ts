@@ -25,6 +25,10 @@ export class LabsComponent {
     name: 'Jose Luis',
     age: 30,
   };
+
+  clickHandler() {
+    alert('hola!');
+  }
 }
 
 //es posible querer que el template no tenga acceso a las variables
