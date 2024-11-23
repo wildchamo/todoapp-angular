@@ -37,8 +37,6 @@ export class HomeComponent {
   }
 
   deleteTodo(index: number) {
-    this.todos.update((todos) =>
-      todos.filter((task, position) => position !== index)
-    );
+    this.todos.update((todos) => todos.filter((task) => task.id !== index));
   }
 }

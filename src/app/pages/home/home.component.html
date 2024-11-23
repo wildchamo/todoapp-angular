@@ -45,7 +45,7 @@
           <div class="view">
             <input class="toggle" type="checkbox" />
             <label>{{ todo.name }}</label>
-            <button class="destroy" (click)="deleteTodo(i)"></button>
+            <button class="destroy" (click)="deleteTodo(todo.id)"></button>
           </div>
           <input class="edit" value="Buy a unicorn" />
         </li>
