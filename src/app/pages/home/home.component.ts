@@ -50,6 +50,8 @@ export class HomeComponent {
   }
 
   incompleteTodos() {
-    return this.todos().filter((task) => !task.completed)?.length;
+    const leftTodos = this.todos().filter((task) => !task.completed)?.length;
+
+    return leftTodos;
   }
 }
