@@ -68,4 +68,9 @@
     <p *ngSwitchCase="'ana'">Soy Ana</p>
     <p *ngSwitchDefault>Mi nombre no es ninguno de esos</p>
   </div>
+
+  <hr />
+
+  <input type="color" [formControl]="colorCtrl" />
+  <p>{{ colorCtrl.value }}</p>
 </section>

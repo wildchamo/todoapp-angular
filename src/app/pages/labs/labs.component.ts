@@ -1,13 +1,20 @@
 import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-labs',
-  imports: [CommonModule],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './labs.component.html',
   styleUrl: './labs.component.css',
 })
 export class LabsComponent {
+  constructor() {
+    this.colorCtrl.valueChanges.subscribe((value) => {
+      console.log(value);
+    });
+  }
+
   welcome = 'jai papa';
   tasks = signal([
     { name: 'Task 1', completed: false },
@@ -16,6 +23,8 @@ export class LabsComponent {
   ]);
   name = 'Jose Luis 😈';
   edad = 30;
+
+  colorCtrl = new FormControl();
 
   holaSignal = signal('jelow Joselin pinguin');
 

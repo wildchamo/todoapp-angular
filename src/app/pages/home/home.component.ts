@@ -1,10 +1,11 @@
 import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Todo } from '../../models/todos.model';
+import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
@@ -15,21 +16,25 @@ export class HomeComponent {
     { id: this.generateId(), name: 'Task 3', completed: false },
   ]);
 
-  addTodo(event: Event) {
-    const eventTarget = event.target as HTMLInputElement;
-    const newTodoName = eventTarget.value;
+  newTodoCtrl = new FormControl('', {
+    nonNullable: true,
+    validators: [Validators.required],
+  });
 
-    if (!newTodoName) return;
+  addTodo() {
+    const newValue = this.newTodoCtrl.value;
+    if (newValue) {
+      const newTodo = {
+        name: newValue,
+        completed: false,
+        id: this.generateId(),
+      };
 
-    const newTodo = {
-      name: newTodoName,
-      completed: false,
-      id: this.generateId(),
-    };
-
-    this.todos.update((todos) => [...todos, newTodo]);
-
-    eventTarget.value = '';
+      this.todos.update((todos) => [...todos, newTodo]);
+      this.newTodoCtrl.setValue('');
+    } else {
+      alert('Please enter a task');
+    }
   }
 
   deleteTodo(id: number) {
