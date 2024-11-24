@@ -61,4 +61,11 @@
   <h3>Hola</h3>
 
   <h1 *ngIf="person().age > 29">cumple con la edad</h1>
+
+  <div [ngSwitch]="person().name">
+    <p *ngSwitchCase="'nicolas'">soy Nicolas</p>
+    <p *ngSwitchCase="'julian'">soy Julian</p>
+    <p *ngSwitchCase="'ana'">Soy Ana</p>
+    <p *ngSwitchDefault>Mi nombre no es ninguno de esos</p>
+  </div>
 </section>
