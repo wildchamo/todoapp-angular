@@ -16,6 +16,8 @@ export class HomeComponent {
     { id: this.generateId(), name: 'Task 3', completed: false },
   ]);
 
+  filter = signal('all');
+
   newTodoCtrl = new FormControl('', {
     nonNullable: true,
     validators: [Validators.required],
@@ -98,5 +100,9 @@ export class HomeComponent {
     const leftTodos = this.todos().filter((task) => !task.completed)?.length;
 
     return leftTodos;
+  }
+
+  changeFilter(filter: string) {
+    this.filter.set(filter);
   }
 }
