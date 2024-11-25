@@ -84,4 +84,16 @@
   <p>{{ witdhCtrl.value }}</p>
 
   <div class="box" [style.width.px]="witdhCtrl.value"></div>
+
+  <hr />
+
+  <input type="text" [formControl]="nameCtrl" />
+  <br />
+  <span
+    class="message-error"
+    [class.show]="nameCtrl.invalid && nameCtrl.touched"
+    >Nombre invalido</span
+  >
+
+  hola
 </section>

@@ -1,7 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
-
+import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 @Component({
   selector: 'app-labs',
   imports: [CommonModule, ReactiveFormsModule],
@@ -27,6 +26,10 @@ export class LabsComponent {
   colorCtrl = new FormControl();
   witdhCtrl = new FormControl(50, {
     nonNullable: true,
+  });
+  nameCtrl = new FormControl('', {
+    nonNullable: true,
+    validators: [Validators.required, Validators.minLength(5)],
   });
 
   holaSignal = signal('jelow Joselin pinguin');

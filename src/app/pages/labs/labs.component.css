@@ -22,4 +22,16 @@ button{
     height: 100px;
     background-color: red;
   }
+
+  .message-error{
+    background-color: red;
+    color: white;
+    padding: 1px;
+    opacity: 0;
+    transition: all linear 0.1s;
+  }
+
+  .message-error.show{
+    opacity: 1;
+  }
 }
