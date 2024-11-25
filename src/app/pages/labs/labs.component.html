@@ -73,4 +73,15 @@
 
   <input type="color" [formControl]="colorCtrl" />
   <p>{{ colorCtrl.value }}</p>
+
+  <svg>
+    <circle cx="50" cy="50" r="40" [attr.fill]="colorCtrl.value" />
+  </svg>
+
+  <hr />
+
+  <input type="number" [formControl]="witdhCtrl" />
+  <p>{{ witdhCtrl.value }}</p>
+
+  <div class="box" [style.width.px]="witdhCtrl.value"></div>
 </section>

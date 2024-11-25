@@ -16,4 +16,10 @@ button{
 
 .labs{
   padding: 5rem;
+
+  .box{
+    display: block;
+    height: 100px;
+    background-color: red;
+  }
 }

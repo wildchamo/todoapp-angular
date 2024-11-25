@@ -25,6 +25,9 @@ export class LabsComponent {
   edad = 30;
 
   colorCtrl = new FormControl();
+  witdhCtrl = new FormControl(50, {
+    nonNullable: true,
+  });
 
   holaSignal = signal('jelow Joselin pinguin');
 

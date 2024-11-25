@@ -22,7 +22,8 @@ export class HomeComponent {
   });
 
   addTodo() {
-    const newValue = this.newTodoCtrl.value;
+    const controller = this.newTodoCtrl;
+    const newValue = controller.value.trim();
     if (newValue) {
       const newTodo = {
         name: newValue,
@@ -34,6 +35,7 @@ export class HomeComponent {
       this.newTodoCtrl.setValue('');
     } else {
       alert('Please enter a task');
+      controller.setValue('');
     }
   }
 
