@@ -39,7 +39,7 @@
       </ul>
     </section>
     <!-- This footer should be hidden by default and shown when there are todos -->
-    <footer class="footer">
+    <footer class="footer" *ngIf="todos().length > 0">
       <!-- This should be `0 items left` by default -->
       <span [ngSwitch]="true" class="todo-count">
         <strong *ngSwitchCase="incompleteTodos() === 0">No Todos Left!</strong>

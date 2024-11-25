@@ -1,4 +1,11 @@
-import { Component, computed, signal } from '@angular/core';
+import {
+  Component,
+  computed,
+  effect,
+  signal,
+  inject,
+  Injector,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Todo } from '../../models/todos.model';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -10,13 +17,29 @@ import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
   styleUrl: './home.component.css',
 })
 export class HomeComponent {
-  todos = signal<Todo[]>([
-    { id: this.generateId(), name: 'Task 1', completed: false },
-    { id: this.generateId(), name: 'Task 2', completed: true },
-    { id: this.generateId(), name: 'Task 3', completed: false },
-  ]);
+  todos = signal<Todo[]>([]);
 
   filter = signal<'all' | 'completed' | 'pending'>('all');
+
+  injector = inject(Injector);
+
+  ngOnInit() {
+    const todos = localStorage.getItem('todos');
+    if (todos) {
+      this.todos.set(JSON.parse(todos));
+    }
+    this.tackTodos();
+  }
+
+  tackTodos() {
+    effect(
+      () => {
+        const todos = this.todos();
+        localStorage.setItem('todos', JSON.stringify(todos));
+      },
+      { injector: this.injector }
+    );
+  }
 
   todoByFilter = computed(() => {
     const filter = this.filter();
