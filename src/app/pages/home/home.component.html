@@ -54,23 +54,21 @@
       <!-- Remove this if you don't implement routing -->
       <ul class="filters">
         <li>
-          <a
-            (click)="changeFilter('all')"
-            [class]="filter() === 'all' ? 'selected' : ''"
+          <a (click)="changeFilter('all')" [class.selected]="filter() === 'all'"
             >All</a
           >
         </li>
         <li>
           <a
             (click)="changeFilter('pending')"
-            [class]="filter() === 'pending' ? 'selected' : ''"
+            [class.selected]="filter() === 'pending'"
             >Pending</a
           >
         </li>
         <li>
           <a
             (click)="changeFilter('completed')"
-            [class]="filter() === 'completed' ? 'selected' : ''"
+            [class.selected]="filter() === 'completed'"
             >Completed</a
           >
         </li>
