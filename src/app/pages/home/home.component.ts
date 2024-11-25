@@ -40,24 +40,41 @@ export class HomeComponent {
   }
 
   updateTodoEditingMode(id: number) {
-    console.log(id);
-
     this.todos.update((prevState) => {
       return prevState.map((todo) => {
-        if (todo.id === id) {
+        if (todo.id === id && !todo.completed) {
           return {
             ...todo,
             editing: true,
           };
         } else {
-          return todo;
+          return { ...todo, editing: false };
         }
       });
     });
   }
 
-  editTodo(arg0: number) {
-    throw new Error('Method not implemented.');
+  editTodo(id: number, e: Event) {
+    const event = e.target as HTMLInputElement;
+    const newValue = event.value.trim();
+
+    if (!newValue) {
+      return;
+    } else {
+      this.todos.update((prevState) => {
+        return prevState.map((todo) => {
+          if (todo.id === id && !todo.completed) {
+            return {
+              ...todo,
+              editing: false,
+              name: newValue,
+            };
+          } else {
+            return { ...todo };
+          }
+        });
+      });
+    }
   }
 
   deleteTodo(id: number) {

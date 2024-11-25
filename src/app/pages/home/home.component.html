@@ -30,6 +30,8 @@
           *ngFor="let todo of todos(); index as i"
           [class.completed]="todo.completed"
           (dblclick)="updateTodoEditingMode(todo.id)"
+          [class.editing]="todo.editing"
+          (keydown.enter)="editTodo(todo.id, $event)"
         >
           <div class="view">
             <input
