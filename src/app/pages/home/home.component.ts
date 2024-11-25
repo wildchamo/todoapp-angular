@@ -39,6 +39,27 @@ export class HomeComponent {
     }
   }
 
+  updateTodoEditingMode(id: number) {
+    console.log(id);
+
+    this.todos.update((prevState) => {
+      return prevState.map((todo) => {
+        if (todo.id === id) {
+          return {
+            ...todo,
+            editing: true,
+          };
+        } else {
+          return todo;
+        }
+      });
+    });
+  }
+
+  editTodo(arg0: number) {
+    throw new Error('Method not implemented.');
+  }
+
   deleteTodo(id: number) {
     this.todos.update((todos) => todos.filter((task) => task.id !== id));
   }

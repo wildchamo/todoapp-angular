@@ -29,6 +29,7 @@
         <li
           *ngFor="let todo of todos(); index as i"
           [class.completed]="todo.completed"
+          (dblclick)="updateTodoEditingMode(todo.id)"
         >
           <div class="view">
             <input
@@ -40,7 +41,7 @@
             <label>{{ todo.name }}</label>
             <button class="destroy" (click)="deleteTodo(todo.id)"></button>
           </div>
-          <input class="edit" />
+          <input class="edit" [value]="todo.name" />
         </li>
       </ul>
     </section>
@@ -76,8 +77,8 @@
 </section>
 
 <ng-template #oneTodoBlock>item left</ng-template>
-
-<!-- <pre>
+<!--
+<pre>
   <code>
     {{ todos() | json }}
   </code>
