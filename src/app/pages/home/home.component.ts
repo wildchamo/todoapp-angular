@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Todo } from '../../models/todos.model';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -17,6 +17,20 @@ export class HomeComponent {
   ]);
 
   filter = signal('all');
+
+  todoByFilter = computed(() => {
+    const filter = this.filter();
+    const todos = this.todos();
+
+    if (filter === 'pending') {
+      return todos.filter((task) => !task.completed);
+    }
+    if (filter === 'completed') {
+      return todos.filter((task) => task.completed);
+    }
+
+    return todos;
+  });
 
   newTodoCtrl = new FormControl('', {
     nonNullable: true,

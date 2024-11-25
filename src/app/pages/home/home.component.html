@@ -27,7 +27,7 @@
         </li>
 
         <li
-          *ngFor="let todo of todos(); index as i"
+          *ngFor="let todo of todoByFilter(); index as i"
           [class.completed]="todo.completed"
           (dblclick)="updateTodoEditingMode(todo.id)"
           [class.editing]="todo.editing"
