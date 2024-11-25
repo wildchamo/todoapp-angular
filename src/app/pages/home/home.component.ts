@@ -16,7 +16,7 @@ export class HomeComponent {
     { id: this.generateId(), name: 'Task 3', completed: false },
   ]);
 
-  filter = signal('all');
+  filter = signal<'all' | 'completed' | 'pending'>('all');
 
   todoByFilter = computed(() => {
     const filter = this.filter();
@@ -116,7 +116,7 @@ export class HomeComponent {
     return leftTodos;
   }
 
-  changeFilter(filter: string) {
+  changeFilter(filter: 'all' | 'completed' | 'pending') {
     this.filter.set(filter);
   }
 }
