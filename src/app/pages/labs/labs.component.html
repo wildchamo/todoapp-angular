@@ -4,7 +4,9 @@
   <h3>{{ welcome }}</h3>
 
   <ul>
-    <li *ngFor="let task of tasks()">{{ task.name }}, {{ task.completed }}</li>
+    @for (task of tasks(); track task) {
+    <li>{{ task.name }}, {{ task.completed }}</li>
+    }
   </ul>
 
   <hr />
@@ -41,18 +43,18 @@
 
   <ul>
     <p>total: {{ tasks().length }}</p>
-    <li *ngFor="let task of tasks(); index as i">
-      {{ i + 1 }} {{ task.name }}, {{ task.completed }}
-    </li>
+    @for (task of tasks(); track task; let i = $index) {
+    <li>{{ i + 1 }} {{ task.name }}, {{ task.completed }}</li>
+    }
   </ul>
 
   <hr />
 
   <h2>ngIf</h2>
 
-  <div *ngIf="1 === 1">My content</div>
-
-  @if (holaSignal()=== 'jelow Joselin pinguin') {
+  @if (1 === 1) {
+  <div>My content</div>
+  } @if (holaSignal()=== 'jelow Joselin pinguin') {
   <h3>efectivamente jai pap</h3>
   } @else {
   <div>no soy Joselin Pinguin</div>
@@ -60,13 +62,20 @@
 
   <h3>Hola</h3>
 
-  <h1 *ngIf="person().age > 29">cumple con la edad</h1>
+  @if (person().age > 29) {
+  <h1>cumple con la edad</h1>
+  }
 
-  <div [ngSwitch]="person().name">
-    <p *ngSwitchCase="'nicolas'">soy Nicolas</p>
-    <p *ngSwitchCase="'julian'">soy Julian</p>
-    <p *ngSwitchCase="'ana'">Soy Ana</p>
-    <p *ngSwitchDefault>Mi nombre no es ninguno de esos</p>
+  <div>
+    @switch (person().name) { @case ('nicolas') {
+    <p>soy Nicolas</p>
+    } @case ('julian') {
+    <p>soy Julian</p>
+    } @case ('ana') {
+    <p>Soy Ana</p>
+    } @default {
+    <p>Mi nombre no es ninguno de esos</p>
+    } }
   </div>
 
   <hr />
@@ -110,11 +119,16 @@
 
   <h2>New Switch</h2>
   <h3>Before</h3>
-  <div [ngSwitch]="person().name">
-    <p *ngSwitchCase="'nicolas'">soy Nicolas</p>
-    <p *ngSwitchCase="'julian'">soy Julian</p>
-    <p *ngSwitchCase="'ana'">Soy Ana</p>
-    <p *ngSwitchDefault>Mi nombre no es ninguno de esos</p>
+  <div>
+    @switch (person().name) { @case ('nicolas') {
+    <p>soy Nicolas</p>
+    } @case ('julian') {
+    <p>soy Julian</p>
+    } @case ('ana') {
+    <p>Soy Ana</p>
+    } @default {
+    <p>Mi nombre no es ninguno de esos</p>
+    } }
   </div>
 
   <h3>after</h3>
