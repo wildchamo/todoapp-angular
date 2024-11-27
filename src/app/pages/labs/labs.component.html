@@ -52,11 +52,11 @@
 
   <div *ngIf="1 === 1">My content</div>
 
-  <div *ngIf="holaSignal() !== 'jelow Joselin pinguin'; else noNameBlock">
-    efectivamente jai pap
-  </div>
-
-  <ng-template #noNameBlock> No se cumple la condicion </ng-template>
+  @if (holaSignal()=== 'jelow Joselin pinguin') {
+  <h3>efectivamente jai pap</h3>
+  } @else {
+  <div>no soy Joselin Pinguin</div>
+  }
 
   <h3>Hola</h3>
 
@@ -96,4 +96,38 @@
   >
 
   hola
+
+  <h1>New For</h1>
+
+  <!-- la nueva intefaz tiene un mejor rendimiento!  -->
+  <ul>
+    @for(task of tasks(); track task.name; let i = $index) {
+    <li>{{ i + 1 }} {{ task.name }}</li>
+    } @empty {
+    <h2>No hay tareas</h2>
+    }
+  </ul>
+
+  <h2>New Switch</h2>
+  <h3>Before</h3>
+  <div [ngSwitch]="person().name">
+    <p *ngSwitchCase="'nicolas'">soy Nicolas</p>
+    <p *ngSwitchCase="'julian'">soy Julian</p>
+    <p *ngSwitchCase="'ana'">Soy Ana</p>
+    <p *ngSwitchDefault>Mi nombre no es ninguno de esos</p>
+  </div>
+
+  <h3>after</h3>
+
+  <!-- Tambien tiene mejor rendimiento :0 -->
+
+  @switch (person().name) { @case ('nicolas') {
+  <p>Soy Nicolas</p>
+  } @case ('julian') {
+  <p>Soy Julian</p>
+  } @case ('ana') {
+  <p>Soy Ana</p>
+  }@default {
+  <p>Mi nombre no es ninguno de esos</p>
+  }}
 </section>
